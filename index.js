@@ -55,6 +55,8 @@ class ElementosAsegurados {
     }
 }
 
+// LISTAS
+
 let lista_seguros = [];
 
 // BUCLE PROMPT --> SOLICITUD DE DATOS PARA CALCULAR VALOR DEL SEGURO
@@ -67,7 +69,7 @@ while( ingreso != "Salir"){
     
     if(ingreso === "Seguros"){
         
-        let objeto_asegurado = prompt("Escriba que desea asegurar: Auto / Moto / Bicilceta / Lancha");
+        let objeto_asegurado = prompt("Escriba que desea asegurar: Auto / Moto / Bicicleta / Lancha");
         
         let monto = parseFloat(prompt("Ingrese el monto a asegurar(solo numeros): "));
         
@@ -138,6 +140,8 @@ while( ingreso != "Salir"){
     console.log("¡FINALIZADO!");
     console.log("");
 }
+
+// MUESTRA TOTAL FINAL
 
 console.log("A continuacion le mostraremos la suma total a abonar por mes de sus seguros:")
 
