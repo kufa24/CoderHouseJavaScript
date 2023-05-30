@@ -1,17 +1,10 @@
-/* 
-
-Quiero aclarar que nose porque pero hace 2 dias vengo renegando con que si la primera vez que abro el archivo .html desde el navegador, si no le ingreso "Salir", no me mestra nada en consola.
-Busque por todos lados y no veo mi error. Llegue a preguntarle a ChatGPT, le pase todo el codigo y me dice que esta bien. Pero me pasa eso. Si encuentran la solucion pasenmela porfis.
-
-Pd: Apenas se abre el primer propmt ingresan Salir, luego F5 y a partir de ahi funciona como deberia. Hasta que no ingresen Salir y despues F5 no va a mostrar nada en consola.
-
-Saludos.-
-
-*/
-
-// Seguros
 
 console.log("¡Bienvendio a Seguros Tusam!");
+console.log("");
+console.log("A continuacion, calcularemos el valor de tu seguro...");
+console.log("");
+
+// FUNCIONES
 
 function calcular_auto( monto ){
     suma_asegurada = parseFloat(monto);
@@ -22,6 +15,16 @@ function calcular_auto( monto ){
 function calcular_moto( monto ){
     suma_asegurada = parseFloat(monto);
     suma_asegurada = suma_asegurada - (suma_asegurada * 0.80);
+    return suma_asegurada
+}
+function calcular_bicicleta( monto ){
+    suma_asegurada = parseFloat(monto);
+    suma_asegurada = suma_asegurada - (suma_asegurada * 0.75);
+    return suma_asegurada
+}
+function calcular_lancha( monto ){
+    suma_asegurada = parseFloat(monto);
+    suma_asegurada = suma_asegurada - (suma_asegurada * 0.70);
     return suma_asegurada
 }
 
@@ -35,23 +38,38 @@ function valor_descuento (valor, descuento){
     return valor_final;
 }
 
+//OBJETOS
+
+class ElementosAsegurados {
+
+    constructor(objeto_asegurado, monto, total){
+        this.objeto_asegurado = objeto_asegurado;
+        this.monto = monto;
+        this.total = total;
+    }
+    datosSeguros(){
+        console.log("----> DATOS DE SEGURO SOLICITADO <----")
+        console.log("Objeto a Asegurar: ", this.objeto_asegurado);
+        console.log("Valor ingresado: $", this.monto);
+        console.log("Monto a Pagar: $", this.total);
+    }
+}
+
+let lista_seguros = [];
+
+// BUCLE PROMPT --> SOLICITUD DE DATOS PARA CALCULAR VALOR DEL SEGURO
+
 let ingreso = "";
 
 while( ingreso != "Salir"){
     
     ingreso = prompt("Escriba una de las siguientes opciones: Seguros / Salir");
-
-    console.log("Usted ingreso: ", ingreso);
     
     if(ingreso === "Seguros"){
         
-        let objeto_asegurado = prompt("Escriba que desea asegurar: Auto / Moto");
+        let objeto_asegurado = prompt("Escriba que desea asegurar: Auto / Moto / Bicilceta / Lancha");
         
-        console.log("Usted ingreso: ", objeto_asegurado);
-        
-        let monto = prompt("Ingrese el monto a asegurar(solo numeros): ");
-        
-        console.log("Usted ingreso: $", monto);
+        let monto = parseFloat(prompt("Ingrese el monto a asegurar(solo numeros): "));
         
         if(objeto_asegurado === "Auto"){
             
@@ -60,8 +78,12 @@ while( ingreso != "Salir"){
             let descuento = prompt("¿Usted cuenta con una flota de seguros? Ingrese Si o No");
             
             let total = valor_descuento(valor_cuota_auto, descuento);
+
+            let ElementosAsegurados1 = new ElementosAsegurados(objeto_asegurado, monto, total);
             
-            console.log("La cuota mensula del seguro de su auto seria: $", total);
+            lista_seguros.push(ElementosAsegurados1);
+
+            ElementosAsegurados1.datosSeguros();
             
         } else if(objeto_asegurado === "Moto"){
             
@@ -71,7 +93,39 @@ while( ingreso != "Salir"){
             
             let total = valor_descuento(valor_cuota_moto, descuento);
             
-            console.log("La cuota mensula del seguro de su moto seria: $", total);
+            let ElementosAsegurados1 = new ElementosAsegurados(objeto_asegurado, monto, total);
+            
+            lista_seguros.push(ElementosAsegurados1);
+
+            ElementosAsegurados1.datosSeguros()
+            
+        } else if(objeto_asegurado === "Bicicleta"){
+            
+            let valor_cuota_bicicleta = calcular_bicicleta( monto );
+            
+            let descuento = prompt("¿Usted cuenta con una flota de seguros? Ingrese Si o No");
+            
+            let total = valor_descuento(valor_cuota_bicicleta, descuento);
+            
+            let ElementosAsegurados1 = new ElementosAsegurados(objeto_asegurado, monto, total);
+            
+            lista_seguros.push(ElementosAsegurados1);
+
+            ElementosAsegurados1.datosSeguros()
+            
+        } else if(objeto_asegurado === "Lancha"){
+            
+            let valor_cuota_lancha = calcular_lancha( monto );
+            
+            let descuento = prompt("¿Usted cuenta con una flota de seguros? Ingrese Si o No");
+            
+            let total = valor_descuento(valor_cuota_lancha, descuento);
+            
+            let ElementosAsegurados1 = new ElementosAsegurados(objeto_asegurado, monto, total);
+            
+            lista_seguros.push(ElementosAsegurados1);
+
+            ElementosAsegurados1.datosSeguros()
             
         } else{
             console.log("Dato Incorrecto");
@@ -81,20 +135,13 @@ while( ingreso != "Salir"){
     } else{
         console.log("Dato Incorrecto");
     }
-
     console.log("¡FINALIZADO!");
+    console.log("");
 }
 
+console.log("A continuacion le mostraremos la suma total a abonar por mes de sus seguros:")
 
+let sumatoriaTotal = lista_seguros.reduce((acumulador, elemento) => acumulador  + elemento.total, 0);
 
-
-
-
-
-
-
-
-
-
-
+console.log("Suma total a Abonar: $ ", sumatoriaTotal);
 
