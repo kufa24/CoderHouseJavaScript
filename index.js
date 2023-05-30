@@ -1,3 +1,10 @@
+/* 
+
+Apenas se abre el primer propmt ingresan Salir, luego F5 y a partir de ahi funciona como deberia. Hasta que no ingresen Salir y despues F5 no va a mostrar nada en consola.
+
+Saludos.-
+
+*/
 
 console.log("¡Bienvendio a Seguros Tusam!");
 console.log("");
@@ -148,4 +155,3 @@ console.log("A continuacion le mostraremos la suma total a abonar por mes de sus
 let sumatoriaTotal = lista_seguros.reduce((acumulador, elemento) => acumulador  + elemento.total, 0);
 
 console.log("Suma total a Abonar: $ ", sumatoriaTotal);
-
