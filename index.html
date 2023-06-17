@@ -1,12 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2da Pre Entrega</title>
-</head>
-<body>
-    <script src="index.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>3ra Pre Entrega</title>
+    </head>
+    <body>
+        <header>
+        </header>
+        <body>
+            <h1>Bienvenido a Seguros Tusam</h1>
+            <h2>La mejor empresa de seguros</h2>
+            <section>
+                <div class="container">
+                    <h3>Calculadora de Seguros</h3>
+                    <div class="form">
+                        <form>
+                            <div>
+                                <label for="nombre">Ingrese su Nombre:</label>
+                                <input type="text" id="nombre" placeholder="Ingrese su nombre"><br>
+                                <label for="apellido">Ingrese su Apellido:</label>
+                                <input type="text" id="apellido" placeholder="Ingrese su apellido">
+                            </div>
+                            <div>
+                            <label for="elementoAsegurado">Seleccione el elemento a asegurar:</label>
+                            <select id="elementoAsegurado">
+                                <option value="Auto">Auto</option>
+                                <option value="Moto">Moto</option>
+                                <option value="Bicicleta">Bicicleta</option>
+                                <option value="Lancha">Lancha</option>
+                            </select>
+                            </div>
+                            <div>
+                                <label for="monto">Ingrese el valor a asegurar:</label>
+                                <input type="number" id="monto" min="100" max="100000000" required placeholder="$.............">
+                            </div>
+                            <div>
+                                <label for="descuento">¿Usted cuenta con una flota en el seguro?</label>
+                                <select id="descuento">
+                                    <option value="Si">Si</option>
+                                    <option value="No">No</option>
+                                </select>
+                                </div>
+                        </form>
+                        <div>
+                            <button onclick="realizarCalculo()">Realizar Calculo</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="resultado">
+                    <h3>RESULTADOS</h3>
+                    <table id="tabla" border="1">
+                        <tr>
+                            <th>Elemento Asegurado</th>
+                            <th>Monto a Asegurar</th>
+                            <th>Total a Pagar</th>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+            <script src="index2.js"></script>
+        </body>
+        <footer id="footer">
+        </footer>
+    </body>
 </html>
